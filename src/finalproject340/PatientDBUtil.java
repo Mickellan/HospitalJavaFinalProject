@@ -11,13 +11,13 @@ public class PatientDBUtil {
 
     public static boolean savePatient(
             String patientID, String ptLastName, String ptPreviousLastName, String ptFirstName,
-            String homeAddress1, String homeCity, String homeStateProvinceRegion, String homeZip,
+            String homeAddress1, String homeCity, String homeState, String homeZip,
             String country, String citizenship, String ptMobilePhone, String emergencyPhoneNumber,
             String emailAddress, String ptSSN, String dob, String gender, String ethnicAssociation,
             String maritalStatus, String currentPrimaryHCP, String comments, String nextOfKin,
             String nextOfKinRelationshipToPatient
     ) {
-        try {
+        try { 
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
             CallableStatement stmt = con.prepareCall("{CALL insertPatient(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 
@@ -27,7 +27,7 @@ public class PatientDBUtil {
             stmt.setString(4, ptFirstName);
             stmt.setString(5, homeAddress1);
             stmt.setString(6, homeCity);
-            stmt.setString(7, homeStateProvinceRegion);
+            stmt.setString(7, homeState);
             stmt.setString(8, homeZip);
             stmt.setString(9, country);
             stmt.setString(10, citizenship);

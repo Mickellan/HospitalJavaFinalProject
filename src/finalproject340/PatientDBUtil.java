@@ -55,5 +55,40 @@ public class PatientDBUtil {
             return false;
         }
     }
+    
+    public static boolean saveGeneralMedicalHistory(
+            String patientID,
+            String tobacco, String tobaccoQuantity, String tobaccoDuration,
+            String alcohol, String alcoholQuantity, String alcoholDuration,
+            String drug, String drugType, String drugDuration,
+            String bloodType, String rh
+    ) {
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
+            CallableStatement stmt = con.prepareCall("{CALL insertGeneralMedicalHistory(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+
+            stmt.setString(1, patientID);
+            stmt.setString(2, tobacco);
+            stmt.setString(3, tobaccoQuantity);
+            stmt.setString(4, tobaccoDuration);
+            stmt.setString(5, alcohol);
+            stmt.setString(6, alcoholQuantity);
+            stmt.setString(7, alcoholDuration);
+            stmt.setString(8, drug);
+            stmt.setString(9, drugType);
+            stmt.setString(10, drugDuration);
+            stmt.setString(11, bloodType);
+            stmt.setString(12, rh);
+
+            stmt.execute();
+            con.close();
+            JOptionPane.showMessageDialog(null, "General Medical History saved successfully!");
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error saving General Medical History: " + e.getMessage());
+            return false;
+        }
+    }
 
 }

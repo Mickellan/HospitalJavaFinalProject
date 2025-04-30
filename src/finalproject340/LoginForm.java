@@ -125,8 +125,8 @@ public class LoginForm extends javax.swing.JFrame {
         ResultSet rs = pst.executeQuery();
         
         if (rs.next()) {
-            MainMenuForm menu = new MainMenuForm();
-            menu.setVisible(true);
+            patientDemographicsForm demographicsForm = new patientDemographicsForm();
+            demographicsForm.setVisible(true); 
             this.dispose();  
         } else {
             lblMessage.setText("Invalid login.");

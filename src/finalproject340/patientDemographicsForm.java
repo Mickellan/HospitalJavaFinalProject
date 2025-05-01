@@ -5,10 +5,7 @@
 package finalproject340;
 
 import javax.swing.JOptionPane;
-import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class patientDemographicsForm extends javax.swing.JFrame {
 
@@ -183,9 +180,19 @@ public class patientDemographicsForm extends javax.swing.JFrame {
         getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 436, 87, 33));
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 436, 84, 33));
 
         btnNew.setText("New");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 436, 84, 33));
 
         btnDelete.setText("Delete");
@@ -261,12 +268,87 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+      try {
+        Connection con = DBConnection.getConnection();
+        String sql = "DELETE FROM patientdemographics WHERE PatientID = ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setInt(1, Integer.parseInt(txtPatientID.getText()));
+
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Record deleted.");
+        pst.close();
+        con.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGenderActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+     txtPatientID.setText("");
+    txtPtLastName.setText("");
+    txtPtPreviousLastName.setText("");
+    txtPtFirstName.setText("");
+    txtHomeAddress1.setText("");
+    txtHomeCity.setText("");
+    txtHomeState.setText("");
+    txtHomeZip.setText("");
+    txtCountry.setText("");
+    txtCitizenship.setText("");
+    txtPtMobilePhone.setText("");
+    txtEmergencyPhoneNumber.setText("");
+    txtEmailAddress.setText("");
+    txtPtSSN.setText("");
+    txtDOB.setText("");
+    txtGender.setText("");
+    txtEthnicAssociation.setText("");
+    txtMaritalStatus.setText("");
+    txtCurrentPrimaryHCP.setText("");
+    txtComments.setText("");
+    txtNextOfKin.setText("");
+    txtNextOfKinRelationshipToPatient.setText("");
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+     try {
+        Connection con = DBConnection.getConnection();
+        String sql = "UPDATE patientdemographics SET PtLastName = ?, PtPreviousLastName = ?, PtFirstName = ?, HomeAddress1 = ?, HomeCity = ?, HomeState = ?, HomeZip = ?, Country = ?, Citizenship = ?, PtMobilePhone = ?, EmergencyPhoneNumber = ?, EmailAddress = ?, PtSSN = ?, DOB = ?, Gender = ?, EthnicAssociation = ?, MaritalStatus = ?, CurrentPrimaryHCP = ?, Comments = ?, NextOfKin = ?, NextOfKinRelationshipToPatient = ? WHERE PatientID = ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        
+        pst.setString(1, txtPtLastName.getText());
+        pst.setString(2, txtPtPreviousLastName.getText());
+        pst.setString(3, txtPtFirstName.getText());
+        pst.setString(4, txtHomeAddress1.getText());
+        pst.setString(5, txtHomeCity.getText());
+        pst.setString(6, txtHomeState.getText());
+        pst.setString(7, txtHomeZip.getText());
+        pst.setString(8, txtCountry.getText());
+        pst.setString(9, txtCitizenship.getText());
+        pst.setString(10, txtPtMobilePhone.getText());
+        pst.setString(11, txtEmergencyPhoneNumber.getText());
+        pst.setString(12, txtEmailAddress.getText());
+        pst.setString(13, txtPtSSN.getText());
+        pst.setString(14, txtDOB.getText());
+        pst.setString(15, txtGender.getText());
+        pst.setString(16, txtEthnicAssociation.getText());
+        pst.setString(17, txtMaritalStatus.getText());
+        pst.setString(18, txtCurrentPrimaryHCP.getText());
+        pst.setString(19, txtComments.getText());
+        pst.setString(20, txtNextOfKin.getText());
+        pst.setString(21, txtNextOfKinRelationshipToPatient.getText());
+        pst.setInt(22, Integer.parseInt(txtPatientID.getText()));
+        
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Record updated.");
+        pst.close();
+        con.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+    }//GEN-LAST:event_btnEditActionPerformed
 
    
     public static void main(String args[]) {

@@ -4,7 +4,9 @@
  */
 package finalproject340;
 
+import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 public class generalMedicalHistoryForm extends javax.swing.JFrame {
 
@@ -87,10 +89,25 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnNew.setText("New");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Patient ID");
 
@@ -112,7 +129,7 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnSave)
                             .addComponent(txtAlcoholDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnEdit)
@@ -122,9 +139,8 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
                                 .addComponent(btnDelete))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(66, 66, 66)
-                                .addComponent(txtPatientID)
-                                .addGap(75, 75, 75)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(119, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -290,6 +306,65 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     txtBloodType.setText(GeneralMedicalInterview.bloodType);
     txtRh.setText(GeneralMedicalInterview.rh);
     }//GEN-LAST:event_btnStartInterviewActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+    txtPatientID.setText("");
+    txtTobacco.setText("");
+    txtTobaccoQuantity.setText("");
+    txtTobaccoDuration.setText("");
+    txtAlcohol.setText("");
+    txtAlcoholQuantity.setText("");
+    txtAlcoholDuration.setText("");
+    txtDrug.setText("");
+    txtDrugType.setText("");
+    txtDrugDuration.setText("");
+    txtBloodType.setText("");
+    txtRh.setText("");
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+      try {
+        Connection con = DBConnection.getConnection();
+        String sql = "UPDATE generalmedicalhistory SET Tobacco = ?, TobaccoQuantity = ?, Tobaccoduraton = ?, Alcohol = ?, AlcoholQuantity = ?, Alcoholduration = ?, Drug = ?, DrugType = ?, Drugduration = ?, BloodType = ?, Rh = ? WHERE PatientID = ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+
+        pst.setString(1, txtTobacco.getText());
+        pst.setString(2, txtTobaccoQuantity.getText());
+        pst.setString(3, txtTobaccoDuration.getText());
+        pst.setString(4, txtAlcohol.getText());
+        pst.setString(5, txtAlcoholQuantity.getText());
+        pst.setString(6, txtAlcoholDuration.getText());
+        pst.setString(7, txtDrug.getText());
+        pst.setString(8, txtDrugType.getText());
+        pst.setString(9, txtDrugDuration.getText());
+        pst.setString(10, txtBloodType.getText());
+        pst.setString(11, txtRh.getText());
+        pst.setInt(12, Integer.parseInt(txtPatientID.getText()));
+
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Record updated.");
+        pst.close();
+        con.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    try {
+        Connection con = DBConnection.getConnection();
+        String sql = "DELETE FROM generalmedicalhistory WHERE PatientID = ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setInt(1, Integer.parseInt(txtPatientID.getText()));
+
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Record deleted.");
+        pst.close();
+        con.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments

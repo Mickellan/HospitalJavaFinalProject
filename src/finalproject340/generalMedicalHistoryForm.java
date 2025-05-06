@@ -290,7 +290,6 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
 
     GeneralMedicalInterview.startInterview(patientName, patientID);
 
-    // Set the text fields with answers
     txtTobacco.setText(GeneralMedicalInterview.tobacco);
     txtTobaccoQuantity.setText(GeneralMedicalInterview.tobaccoQuantity);
     txtTobaccoDuration.setText(GeneralMedicalInterview.tobaccoDuration);

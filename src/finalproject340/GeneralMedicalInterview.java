@@ -45,10 +45,9 @@ public class GeneralMedicalInterview {
         nodeDrugs.yesBranch = nodeBlood;
         nodeDrugs.noBranch = nodeBlood;
 
-        nodeBlood.yesBranch = null; // end
+        nodeBlood.yesBranch = null; 
         nodeBlood.noBranch = null;
 
-        // Walk tree
         walkTree(root);
 
         InterviewLogger.saveLogFile(patientName, patientID, log.toString());

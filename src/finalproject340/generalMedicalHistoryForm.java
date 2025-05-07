@@ -381,12 +381,9 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-    if (this.patientDemographicsForm != null) {
-            this.patientDemographicsForm.setVisible(true);
-            this.dispose(); // Optionally, dispose of this form
-        } else {
-            JOptionPane.showMessageDialog(null, "Patient Demographics form is not available.");
-        } 
+        patientDemographicsForm = new patientDemographicsForm();
+        patientDemographicsForm.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

@@ -286,8 +286,18 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-     String patientID = txtPatientID.getText();
-     PatientDBUtil.deletePatient(patientID);
+     String patientIDStr = txtPatientID.getText();  
+    try {
+        int patientID = Integer.parseInt(patientIDStr); 
+        boolean isDeleted = PatientDBUtil.deletePatient(patientID);  
+        if (isDeleted) {
+            JOptionPane.showMessageDialog(this, "Patient deleted successfully.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to delete patient.");
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Invalid Patient ID format. Please enter a valid number.");
+    }
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -387,9 +397,8 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }
     public void fillPatientData(String patientID){
         try {
-        // Call the retrievePatient method with the patientID
-        int id = Integer.parseInt(patientID);  // Convert patientID to integer
-        PatientDBUtil.retrievePatient(id);  // This will show a JOptionPane with the patient data
+        int id = Integer.parseInt(patientID);  
+        PatientDBUtil.retrievePatient(id); 
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "Invalid Patient ID format.");
     }

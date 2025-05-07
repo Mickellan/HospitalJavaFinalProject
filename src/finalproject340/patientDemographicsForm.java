@@ -219,7 +219,7 @@ public class patientDemographicsForm extends javax.swing.JFrame {
                 btnRetrieveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRetrieve, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 120, 40));
+        getContentPane().add(btnRetrieve, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 170, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -369,16 +369,9 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-       try {
-        int patientID = Integer.parseInt(txtPatientID.getText());
-
-        generalMedicalHistoryForm generalForm = new generalMedicalHistoryForm(patientID);
-        generalForm.setVisible(true);
-
-        this.dispose();
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Invalid Patient ID.");
-    }
+      generalMedicalHistoryForm generalMedicalHistoryForm = new generalMedicalHistoryForm();
+        generalMedicalHistoryForm.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnRetrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrieveActionPerformed

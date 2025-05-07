@@ -403,6 +403,7 @@ public class patientDemographicsForm extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Invalid Patient ID format.");
     }
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;

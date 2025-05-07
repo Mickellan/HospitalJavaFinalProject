@@ -152,10 +152,10 @@ public class PatientDBUtil {
 
     // Method to delete a patient from the database
     public static boolean deletePatient(int patientID) {
-      try {
+        try {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
         CallableStatement stmt = con.prepareCall("{CALL deletePatient(?)}");
-        stmt.setInt(1, patientID);  // No need to parse again
+        stmt.setInt(1, patientID); 
         stmt.execute();
         con.close();
         JOptionPane.showMessageDialog(null, "Patient deleted successfully!");

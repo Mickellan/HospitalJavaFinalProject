@@ -73,6 +73,8 @@ public class patientDemographicsForm extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnRetrieve = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -177,7 +179,7 @@ public class patientDemographicsForm extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 436, 87, 33));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 87, 33));
 
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +187,7 @@ public class patientDemographicsForm extends javax.swing.JFrame {
                 btnEditActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 436, 84, 33));
+        getContentPane().add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 84, 33));
 
         btnNew.setText("New");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +195,7 @@ public class patientDemographicsForm extends javax.swing.JFrame {
                 btnNewActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 436, 84, 33));
+        getContentPane().add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 84, 33));
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +203,23 @@ public class patientDemographicsForm extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 436, 87, 33));
+        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 87, 33));
+
+        btnNext.setText("General Medical History Page");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, 40));
+
+        btnRetrieve.setText("Retrieve Patient");
+        btnRetrieve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrieveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRetrieve, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 120, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -268,19 +286,9 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-      try {
-        Connection con = DBConnection.getConnection();
-        String sql = "DELETE FROM patientdemographics WHERE PatientID = ?";
-        PreparedStatement pst = con.prepareStatement(sql);
-        pst.setInt(1, Integer.parseInt(txtPatientID.getText()));
+     String patientID = txtPatientID.getText();
+     PatientDBUtil.deletePatient(patientID);
 
-        pst.executeUpdate();
-        JOptionPane.showMessageDialog(this, "Record deleted.");
-        pst.close();
-        con.close();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed
@@ -350,6 +358,24 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btnEditActionPerformed
 
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+       try {
+        int patientID = Integer.parseInt(txtPatientID.getText());
+
+        generalMedicalHistoryForm generalForm = new generalMedicalHistoryForm(patientID);
+        generalForm.setVisible(true);
+
+        this.dispose();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Invalid Patient ID.");
+    }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnRetrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrieveActionPerformed
+         String patientID = txtPatientID.getText();
+        fillPatientData(patientID);
+    }//GEN-LAST:event_btnRetrieveActionPerformed
+
    
     public static void main(String args[]) {
       
@@ -359,11 +385,22 @@ public class patientDemographicsForm extends javax.swing.JFrame {
             }
         });
     }
+    public void fillPatientData(String patientID){
+        try {
+        // Call the retrievePatient method with the patientID
+        int id = Integer.parseInt(patientID);  // Convert patientID to integer
+        PatientDBUtil.retrievePatient(id);  // This will show a JOptionPane with the patient data
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Invalid Patient ID format.");
+    }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnRetrieve;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

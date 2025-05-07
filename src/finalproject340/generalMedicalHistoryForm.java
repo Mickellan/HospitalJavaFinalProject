@@ -4,7 +4,6 @@
  */
 package finalproject340;
 
-import java.sql.CallableStatement;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
@@ -16,6 +15,10 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     public generalMedicalHistoryForm() {
         initComponents();
     }
+    public generalMedicalHistoryForm(int patientID) {
+    this(); 
+    txtPatientID.setText(String.valueOf(patientID));
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -426,7 +429,7 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtDrug;
     private javax.swing.JTextField txtDrugDuration;
     private javax.swing.JTextField txtDrugType;
-    private javax.swing.JTextField txtPatientID;
+    public javax.swing.JTextField txtPatientID;
     private javax.swing.JTextField txtRh;
     private javax.swing.JTextField txtTobacco;
     private javax.swing.JTextField txtTobaccoDuration;

@@ -62,27 +62,28 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Tobacco");
+        jLabel1.setText("Tobacco*");
 
         jLabel2.setText("Tobacco Quantity");
 
         jLabel3.setText("Tobacco Duration");
 
-        jLabel4.setText("Alcohol");
+        jLabel4.setText("Alcohol*");
 
         jLabel5.setText("Alcohol Quantity");
 
         jLabel6.setText("Alcohol Duration");
 
-        jLabel7.setText("Drug");
+        jLabel7.setText("Drug*");
 
         jLabel8.setText("Drug Type");
 
         jLabel9.setText("Drug Duration");
 
-        jLabel10.setText("Blood Type");
+        jLabel10.setText("Blood Type*");
+        jLabel10.setToolTipText("");
 
-        jLabel11.setText("Rh Factor");
+        jLabel11.setText("Rh Factor*");
 
         txtTobaccoQuantity.setEditable(false);
 

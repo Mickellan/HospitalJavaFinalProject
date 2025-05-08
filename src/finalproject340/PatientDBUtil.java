@@ -87,7 +87,6 @@ public class PatientDBUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error saving patient: " + e.getMessage());
             return false;
         }
     }
@@ -122,7 +121,6 @@ public class PatientDBUtil {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error saving General Medical History: " + e.getMessage());
             return false;
         }
     }
@@ -196,7 +194,6 @@ public class PatientDBUtil {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error retrieving patient: " + e.getMessage());
         }
         return null;
     }
@@ -212,7 +209,6 @@ public class PatientDBUtil {
         return true;
     } catch (Exception e) {
         e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error deleting patient: " + e.getMessage());
         return false;
     }
     }

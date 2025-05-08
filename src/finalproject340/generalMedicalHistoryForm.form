@@ -220,7 +220,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tobacco"/>
+            <Property name="text" type="java.lang.String" value="Tobacco*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -235,7 +235,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Alcohol"/>
+            <Property name="text" type="java.lang.String" value="Alcohol*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -250,7 +250,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Drug"/>
+            <Property name="text" type="java.lang.String" value="Drug*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -265,12 +265,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Blood Type"/>
+            <Property name="text" type="java.lang.String" value="Blood Type*"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Rh Factor"/>
+            <Property name="text" type="java.lang.String" value="Rh Factor*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTobaccoQuantity">

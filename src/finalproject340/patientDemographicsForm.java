@@ -144,33 +144,76 @@ public class patientDemographicsForm extends javax.swing.JFrame {
 
         jLabel22.setText("Next of Kin Relationship");
         getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 180, -1));
+
+        txtPatientID.setEditable(false);
         getContentPane().add(txtPatientID, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 39, 90, -1));
+
+        txtPtFirstName.setEditable(false);
         getContentPane().add(txtPtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 89, 90, -1));
+
+        txtPtLastName.setEditable(false);
         getContentPane().add(txtPtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 139, 90, -1));
+
+        txtPtPreviousLastName.setEditable(false);
         getContentPane().add(txtPtPreviousLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 189, 90, -1));
+
+        txtHomeAddress1.setEditable(false);
         getContentPane().add(txtHomeAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 240, 90, -1));
+
+        txtHomeCity.setEditable(false);
         getContentPane().add(txtHomeCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 289, 90, -1));
+
+        txtHomeState.setEditable(false);
         getContentPane().add(txtHomeState, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 339, 90, -1));
+
+        txtHomeZip.setEditable(false);
         getContentPane().add(txtHomeZip, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 395, 90, -1));
+
+        txtCountry.setEditable(false);
         getContentPane().add(txtCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 39, 90, -1));
+
+        txtCitizenship.setEditable(false);
         getContentPane().add(txtCitizenship, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 89, 90, -1));
+
+        txtPtMobilePhone.setEditable(false);
         getContentPane().add(txtPtMobilePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 139, 90, -1));
+
+        txtEmailAddress.setEditable(false);
         getContentPane().add(txtEmailAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 189, 90, -1));
+
+        txtPtSSN.setEditable(false);
         getContentPane().add(txtPtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 240, 90, -1));
+
+        txtDOB.setEditable(false);
         getContentPane().add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 90, -1));
 
+        txtGender.setEditable(false);
         txtGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGenderActionPerformed(evt);
             }
         });
         getContentPane().add(txtGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 100, -1));
+
+        txtEthnicAssociation.setEditable(false);
         getContentPane().add(txtEthnicAssociation, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 39, 100, -1));
+
+        txtMaritalStatus.setEditable(false);
         getContentPane().add(txtMaritalStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 89, 100, -1));
+
+        txtCurrentPrimaryHCP.setEditable(false);
         getContentPane().add(txtCurrentPrimaryHCP, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 139, 100, -1));
+
+        txtComments.setEditable(false);
         getContentPane().add(txtComments, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 189, 100, -1));
+
+        txtNextOfKin.setEditable(false);
         getContentPane().add(txtNextOfKin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 100, -1));
+
+        txtNextOfKinRelationshipToPatient.setEditable(false);
         getContentPane().add(txtNextOfKinRelationshipToPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 100, -1));
+
+        txtEmergencyPhoneNumber.setEditable(false);
         getContentPane().add(txtEmergencyPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 100, -1));
 
         btnSave.setText("Save");
@@ -302,11 +345,11 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtGenderActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-     txtPatientID.setText("");
+    txtPatientID.setText("");
     txtPtLastName.setText("");
     txtPtPreviousLastName.setText("");
     txtPtFirstName.setText("");
@@ -331,41 +374,28 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-     try {
-        Connection con = DBConnection.getConnection();
-        String sql = "UPDATE patientdemographics SET PtLastName = ?, PtPreviousLastName = ?, PtFirstName = ?, HomeAddress1 = ?, HomeCity = ?, HomeState = ?, HomeZip = ?, Country = ?, Citizenship = ?, PtMobilePhone = ?, EmergencyPhoneNumber = ?, EmailAddress = ?, PtSSN = ?, DOB = ?, Gender = ?, EthnicAssociation = ?, MaritalStatus = ?, CurrentPrimaryHCP = ?, Comments = ?, NextOfKin = ?, NextOfKinRelationshipToPatient = ? WHERE PatientID = ?";
-        PreparedStatement pst = con.prepareStatement(sql);
-        
-        pst.setString(1, txtPtLastName.getText());
-        pst.setString(2, txtPtPreviousLastName.getText());
-        pst.setString(3, txtPtFirstName.getText());
-        pst.setString(4, txtHomeAddress1.getText());
-        pst.setString(5, txtHomeCity.getText());
-        pst.setString(6, txtHomeState.getText());
-        pst.setString(7, txtHomeZip.getText());
-        pst.setString(8, txtCountry.getText());
-        pst.setString(9, txtCitizenship.getText());
-        pst.setString(10, txtPtMobilePhone.getText());
-        pst.setString(11, txtEmergencyPhoneNumber.getText());
-        pst.setString(12, txtEmailAddress.getText());
-        pst.setString(13, txtPtSSN.getText());
-        pst.setString(14, txtDOB.getText());
-        pst.setString(15, txtGender.getText());
-        pst.setString(16, txtEthnicAssociation.getText());
-        pst.setString(17, txtMaritalStatus.getText());
-        pst.setString(18, txtCurrentPrimaryHCP.getText());
-        pst.setString(19, txtComments.getText());
-        pst.setString(20, txtNextOfKin.getText());
-        pst.setString(21, txtNextOfKinRelationshipToPatient.getText());
-        pst.setInt(22, Integer.parseInt(txtPatientID.getText()));
-        
-        pst.executeUpdate();
-        JOptionPane.showMessageDialog(this, "Record updated.");
-        pst.close();
-        con.close();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
+     txtPatientID.setEditable(true);
+        txtPtLastName.setEditable(true);
+        txtPtPreviousLastName.setEditable(true);
+        txtPtFirstName.setEditable(true);
+        txtHomeAddress1.setEditable(true);
+        txtHomeCity.setEditable(true);
+        txtHomeState.setEditable(true);
+        txtHomeZip.setEditable(true);
+        txtCountry.setEditable(true);
+        txtCitizenship.setEditable(true);
+        txtPtMobilePhone.setEditable(true);
+        txtEmergencyPhoneNumber.setEditable(true);
+        txtEmailAddress.setEditable(true);
+        txtPtSSN.setEditable(true);
+        txtDOB.setEditable(true);
+        txtGender.setEditable(true);
+        txtEthnicAssociation.setEditable(true);
+        txtMaritalStatus.setEditable(true);
+        txtCurrentPrimaryHCP.setEditable(true);
+        txtComments.setEditable(true);
+        txtNextOfKin.setEditable(true);
+        txtNextOfKinRelationshipToPatient.setEditable(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -375,8 +405,31 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnRetrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrieveActionPerformed
-         String patientID = txtPatientID.getText();
-        fillPatientData(patientID);
+        String patientID = txtPatientID.getText();
+        
+        Patient patient = fillPatientData(patientID);
+        txtPatientID.setText(patientID);
+        txtPtLastName.setText(patient.getPtLastName());
+        txtPtPreviousLastName.setText(patient.getPtPreviousLastName());
+        txtPtFirstName.setText(patient.getPtFirstName());
+        txtHomeAddress1.setText(patient.getHomeAddress1());
+        txtHomeCity.setText(patient.getHomeCity());
+        txtHomeState.setText(patient.getHomeStateProvinceRegion());
+        txtHomeZip.setText(patient.getHomeZip());
+        txtCountry.setText(patient.getCountry());
+        txtCitizenship.setText(patient.getCitizenship());
+        txtPtMobilePhone.setText(patient.getPtMobilePhone());
+        txtEmergencyPhoneNumber.setText(patient.getEmergencyPhoneNumber());
+        txtEmailAddress.setText(patient.getEmailAddress());
+        txtPtSSN.setText(patient.getPtSSN());
+        txtDOB.setText(patient.getDOB().toString()); 
+        txtGender.setText(patient.getGender());
+        txtEthnicAssociation.setText(patient.getEthnicAssociation());
+        txtMaritalStatus.setText(patient.getMaritalStatus());
+        txtCurrentPrimaryHCP.setText(patient.getCurrentPrimaryHCP());
+        txtComments.setText(patient.getComments());
+        txtNextOfKin.setText(patient.getNextOfKin());
+        txtNextOfKinRelationshipToPatient.setText(patient.getNextOfKinRelationshipToPatient());
     }//GEN-LAST:event_btnRetrieveActionPerformed
 
    
@@ -388,13 +441,16 @@ public class patientDemographicsForm extends javax.swing.JFrame {
             }
         });
     }
-    public void fillPatientData(String patientID){
+    
+    public Patient fillPatientData(String patientID){
+        Patient patient = new Patient();
         try {
         int id = Integer.parseInt(patientID);  
-        PatientDBUtil.retrievePatient(id); 
+        patient = PatientDBUtil.retrievePatient(id); 
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "Invalid Patient ID format.");
     }
+        return patient;
     }
     
 

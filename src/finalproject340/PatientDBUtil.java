@@ -18,6 +18,8 @@ public class PatientDBUtil {
             String nextOfKinRelationshipToPatient
     ) {
         try { 
+            
+            if(patientID.equals("")){
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
             CallableStatement stmt = con.prepareCall("{CALL insertPatient(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 
@@ -49,6 +51,40 @@ public class PatientDBUtil {
             JOptionPane.showMessageDialog(null, "Patient saved successfully!");
             
             return true;
+            }
+            else{
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
+            CallableStatement stmt = con.prepareCall("{CALL updatePatient(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+
+            stmt.setString(1, patientID);
+            stmt.setString(2, ptLastName);
+            stmt.setString(3, ptPreviousLastName);
+            stmt.setString(4, ptFirstName);
+            stmt.setString(5, homeAddress1);
+            stmt.setString(6, homeCity);
+            stmt.setString(7, homeState);
+            stmt.setString(8, homeZip);
+            stmt.setString(9, country);
+            stmt.setString(10, citizenship);
+            stmt.setString(11, ptMobilePhone);
+            stmt.setString(12, emergencyPhoneNumber);
+            stmt.setString(13, emailAddress);
+            stmt.setString(14, ptSSN);
+            stmt.setString(15, dob);
+            stmt.setString(16, gender);
+            stmt.setString(17, ethnicAssociation);
+            stmt.setString(18, maritalStatus);
+            stmt.setString(19, currentPrimaryHCP);
+            stmt.setString(20, comments);
+            stmt.setString(21, nextOfKin);
+            stmt.setString(22, nextOfKinRelationshipToPatient);
+
+            stmt.execute();
+            con.close();
+            JOptionPane.showMessageDialog(null, "Patient saved successfully!");
+            
+            return true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error saving patient: " + e.getMessage());
@@ -90,67 +126,81 @@ public class PatientDBUtil {
             return false;
         }
     }
-    public static void retrievePatient(int patientID) {
+    public static Patient retrievePatient(int patientID) {
         String query = "SELECT * FROM patientdemographics WHERE PatientID = ?";
         
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
              PreparedStatement stmt = con.prepareStatement(query)) {
-
-            // Set the patientID parameter
             stmt.setInt(1, patientID);
-
-            // Execute the query
             ResultSet rs = stmt.executeQuery();
-
-            // Check if the patient exists
-            if (rs.next()) {
-                // Retrieve the patient details from the ResultSet
-                String ptLastName = rs.getString("PtLastName");
-                String ptFirstName = rs.getString("PtFirstName");
-                String homeAddress1 = rs.getString("HomeAddress1");
-                String homeCity = rs.getString("HomeCity");
-                String homeState = rs.getString("HomeState");
-                String homeZip = rs.getString("HomeZip");
-                String country = rs.getString("Country");
-                String citizenship = rs.getString("Citizenship");
-                String ptMobilePhone = rs.getString("PtMobilePhone");
-                String emailAddress = rs.getString("EmailAddress");
-                String ptSSN = rs.getString("ptSSN");
-                Date dob = rs.getDate("DOB");
-                String gender = rs.getString("Gender");
-                String ethnicAssociation = rs.getString("EthnicAssociation");
-                String maritalStatus = rs.getString("MaritalStatus");
-                String currentPrimaryHCP = rs.getString("CurrentPrimaryHCP");
-                String comments = rs.getString("Comments");
-                String nextOfKin = rs.getString("NextOfKin");
-                String nextOfKinRelationshipToPatient = rs.getString("NextOfKinRelationshipToPatient");
-
-                // Display the patient details (you can adjust this to use a dialog or other UI)
-                JOptionPane.showMessageDialog(null,
-                        "Patient Info:\n" +
-                        "Name: " + ptFirstName + " " + ptLastName + "\n" +
-                        "Address: " + homeAddress1 + ", " + homeCity + ", " + homeState + " " + homeZip + ", " + country + "\n" +
-                        "Phone: " + ptMobilePhone + "\n" +
-                        "Email: " + emailAddress + "\n" +
-                        "SSN: " + ptSSN + "\n" +
-                        "DOB: " + dob.toString() + "\n" +
-                        "Gender: " + gender + "\n" +
-                        "Ethnicity: " + ethnicAssociation + "\n" +
-                        "Marital Status: " + maritalStatus + "\n" +
-                        "Primary HCP: " + currentPrimaryHCP + "\n" +
-                        "Comments: " + comments + "\n" +
-                        "Next of Kin: " + nextOfKin + " (" + nextOfKinRelationshipToPatient + ")");
-            } else {
-                JOptionPane.showMessageDialog(null, "Patient not found!");
-            }
+            
+        rs.next();
+            Patient patient = new Patient(
+                rs.getString("PtLastName"),
+                rs.getString("PtFirstName"),
+               rs.getString("PtPreviousLastName"),
+                rs.getString("HomeAddress1"),
+                rs.getString("HomeCity"),
+                rs.getString("HomeState"),
+                rs.getString("HomeZip"),
+               rs.getString("Country"),
+               rs.getString("Citizenship"),
+               rs.getString("PtMobilePhone"),
+                rs.getString("EmergencyPhoneNumber"),
+                rs.getString("EmailAddress"),
+               rs.getString("ptSSN"),
+                rs.getDate("DOB"),
+               rs.getString("Gender"),
+                rs.getString("EthnicAssociation"),
+                rs.getString("MaritalStatus"),
+                rs.getString("CurrentPrimaryHCP"),
+                rs.getString("Comments"),
+                rs.getString("NextOfKin"),
+                rs.getString("NextOfKinRelationshipToPatient")
+            );     
+                
+         return patient;
 
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error retrieving patient: " + e.getMessage());
         }
+        return null;
+    }
+     public static Patient retrieveGeneral(String patientID) {
+        String query = "SELECT * FROM generalmedicalhistorytable WHERE PatientID = ?";
+        
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
+             PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, Integer.parseInt(patientID));
+            ResultSet rs = stmt.executeQuery();
+            
+        rs.next();
+            Patient patient = new Patient(
+                rs.getInt("PatientID"),
+                rs.getString("Tobacco"),
+                rs.getString("TobaccoQuantity"),
+                rs.getString("Tobaccoduration"),
+                rs.getString("Alcohol"),
+                rs.getString("AlcoholQuantity"),
+                rs.getString("Alcoholduration"),
+                rs.getString("Drug"),
+                rs.getString("DrugType"),
+                rs.getString("Drugduration"),
+                rs.getString("BloodType"),
+                rs.getString("Rh")
+
+            );     
+                
+         return patient;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error retrieving patient: " + e.getMessage());
+        }
+        return null;
     }
 
-    // Method to delete a patient from the database
     public static boolean deletePatient(int patientID) {
         try {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");

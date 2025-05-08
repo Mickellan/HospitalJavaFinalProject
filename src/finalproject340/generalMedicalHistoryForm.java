@@ -58,6 +58,7 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
         txtPatientID = new javax.swing.JTextField();
         btnStartInterview = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        btnRetrieve = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +83,28 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
         jLabel10.setText("Blood Type");
 
         jLabel11.setText("Rh Factor");
+
+        txtTobaccoQuantity.setEditable(false);
+
+        txtTobacco.setEditable(false);
+
+        txtTobaccoDuration.setEditable(false);
+
+        txtAlcohol.setEditable(false);
+
+        txtAlcoholQuantity.setEditable(false);
+
+        txtAlcoholDuration.setEditable(false);
+
+        txtDrug.setEditable(false);
+
+        txtDrugType.setEditable(false);
+
+        txtDrugDuration.setEditable(false);
+
+        txtBloodType.setEditable(false);
+
+        txtRh.setEditable(false);
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +136,8 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
 
         jLabel12.setText("Patient ID");
 
+        txtPatientID.setEditable(false);
+
         btnStartInterview.setText("Start Interview");
         btnStartInterview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +149,13 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
+            }
+        });
+
+        btnRetrieve.setText("Retrieve Patient");
+        btnRetrieve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrieveActionPerformed(evt);
             }
         });
 
@@ -182,8 +214,13 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
                                 .addComponent(btnStartInterview, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnRetrieve, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(23, 23, 23)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -196,14 +233,17 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtTobacco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtDrug, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel8))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtTobacco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtDrug, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8)))
+                    .addComponent(btnRetrieve, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTobaccoQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,7 +308,7 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -288,14 +328,27 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     String bloodType = txtBloodType.getText();
     String rh = txtRh.getText();
 
-    boolean success = PatientDBUtil.saveGeneralMedicalHistory(
+    boolean isSaved = PatientDBUtil.saveGeneralMedicalHistory(
         patientID, tobacco, tobaccoQuantity, tobaccoduration,
         alcohol, alcoholQuantity, alcoholduration,
         drug, drugType, drugduration, bloodType, rh
     );
 
-    if (success) {
-        JOptionPane.showMessageDialog(this, "Data saved successfully.");
+    if (isSaved) {
+        txtPatientID.setEditable(false);
+        txtTobacco.setEditable(false);
+        txtTobaccoQuantity.setEditable(false);
+        txtTobaccoDuration.setEditable(false);
+        txtAlcohol.setEditable(false);
+        txtAlcoholQuantity.setEditable(false);
+        txtAlcoholDuration.setEditable(false);
+        txtDrug.setEditable(false);
+        txtDrugType.setEditable(false);
+        txtDrugDuration.setEditable(false);
+        txtBloodType.setEditable(false);
+        txtRh.setEditable(false);
+    } else {
+        JOptionPane.showMessageDialog(this, "There was an issue saving the general medical history. Please try again.");
     }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -337,31 +390,18 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-      try {
-        Connection con = DBConnection.getConnection();
-        String sql = "UPDATE generalmedicalhistory SET Tobacco = ?, TobaccoQuantity = ?, Tobaccoduraton = ?, Alcohol = ?, AlcoholQuantity = ?, Alcoholduration = ?, Drug = ?, DrugType = ?, Drugduration = ?, BloodType = ?, Rh = ? WHERE PatientID = ?";
-        PreparedStatement pst = con.prepareStatement(sql);
-
-        pst.setString(1, txtTobacco.getText());
-        pst.setString(2, txtTobaccoQuantity.getText());
-        pst.setString(3, txtTobaccoDuration.getText());
-        pst.setString(4, txtAlcohol.getText());
-        pst.setString(5, txtAlcoholQuantity.getText());
-        pst.setString(6, txtAlcoholDuration.getText());
-        pst.setString(7, txtDrug.getText());
-        pst.setString(8, txtDrugType.getText());
-        pst.setString(9, txtDrugDuration.getText());
-        pst.setString(10, txtBloodType.getText());
-        pst.setString(11, txtRh.getText());
-        pst.setInt(12, Integer.parseInt(txtPatientID.getText()));
-
-        pst.executeUpdate();
-        JOptionPane.showMessageDialog(this, "Record updated.");
-        pst.close();
-        con.close();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
+      txtPatientID.setEditable(true);
+        txtTobacco.setEditable(true);
+        txtTobaccoQuantity.setEditable(true);
+        txtTobaccoDuration.setEditable(true);
+        txtAlcohol.setEditable(true);
+        txtAlcoholQuantity.setEditable(true);
+        txtAlcoholDuration.setEditable(true);
+        txtDrug.setEditable(true);
+        txtDrugType.setEditable(true);
+        txtDrugDuration.setEditable(true);
+        txtBloodType.setEditable(true);
+        txtRh.setEditable(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -385,6 +425,26 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
         patientDemographicsForm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnRetrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrieveActionPerformed
+        
+        String patientID = txtPatientID.getText();
+        
+        Patient patient = PatientDBUtil.retrieveGeneral(patientID);
+        
+        txtPatientID.setText(patient.getPatientID());
+        txtTobacco.setText(patient.getTobacco());
+        txtTobaccoQuantity.setText(patient.getTobaccoQuantity());
+        txtTobaccoDuration.setText(patient.getTobaccoduraton());
+        txtAlcohol.setText(patient.getAlcohol());
+        txtAlcoholQuantity.setText(patient.getAlcoholQuantity());
+        txtAlcoholDuration.setText(patient.getAlcoholduration());
+        txtDrug.setText(patient.getDrug());
+        txtDrugType.setText(patient.getDrugType());
+        txtDrugDuration.setText(patient.getDrugduration());
+        txtBloodType.setText(patient.getBloodType());
+        txtRh.setText(patient.getRh());
+    }//GEN-LAST:event_btnRetrieveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,6 +486,7 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnRetrieve;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnStartInterview;
     private javax.swing.JLabel jLabel1;

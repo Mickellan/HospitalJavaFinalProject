@@ -1,0 +1,13 @@
+Patient ID: 6
+
+Would you like to answer questions about your general medical history? Answer: Yes
+Have you used tobacco? Answer: Yes
+Tobacco Quantity: 5
+Tobacco Duration: 5 years
+Have you consumed alcohol? Answer: No
+Have you used recreational drugs? Answer: Yes
+Drug Type: xanax
+Drug Duration: 5 years
+Do you know your blood type? Answer: Yes
+Blood Type: A
+Rh: Negative

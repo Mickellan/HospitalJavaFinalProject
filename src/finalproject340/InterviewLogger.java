@@ -12,7 +12,6 @@ public class InterviewLogger {
         String filename = "interview_" + patientID + "_" + LocalDate.now() + ".txt";
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-            writer.write("Patient Name: " + patientName + "\n");
             writer.write("Patient ID: " + patientID + "\n\n");
             writer.write(content);
             writer.close();

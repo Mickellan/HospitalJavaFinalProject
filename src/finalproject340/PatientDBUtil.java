@@ -21,30 +21,30 @@ public class PatientDBUtil {
             
             if(patientID.equals("")){
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "password");
-            CallableStatement stmt = con.prepareCall("{CALL insertPatient(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            CallableStatement stmt = con.prepareCall("{CALL insertPatient(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 
-            stmt.setString(1, patientID);
-            stmt.setString(2, ptLastName);
-            stmt.setString(3, ptPreviousLastName);
-            stmt.setString(4, ptFirstName);
-            stmt.setString(5, homeAddress1);
-            stmt.setString(6, homeCity);
-            stmt.setString(7, homeState);
-            stmt.setString(8, homeZip);
-            stmt.setString(9, country);
-            stmt.setString(10, citizenship);
-            stmt.setString(11, ptMobilePhone);
-            stmt.setString(12, emergencyPhoneNumber);
-            stmt.setString(13, emailAddress);
-            stmt.setString(14, ptSSN);
-            stmt.setString(15, dob);
-            stmt.setString(16, gender);
-            stmt.setString(17, ethnicAssociation);
-            stmt.setString(18, maritalStatus);
-            stmt.setString(19, currentPrimaryHCP);
-            stmt.setString(20, comments);
-            stmt.setString(21, nextOfKin);
-            stmt.setString(22, nextOfKinRelationshipToPatient);
+            stmt.setString(1, ptLastName);
+            stmt.setString(2, ptPreviousLastName);
+            stmt.setString(3, ptFirstName);
+            stmt.setString(4, homeAddress1);
+            stmt.setString(5, homeCity);
+            stmt.setString(6, homeState);
+            stmt.setString(7, homeZip);
+            stmt.setString(8, country);
+            stmt.setString(9, citizenship);
+            stmt.setString(10, ptMobilePhone);
+            stmt.setString(11, emergencyPhoneNumber);
+            stmt.setString(12, emailAddress);
+            stmt.setString(13, ptSSN);
+            stmt.setString(14, dob);
+            stmt.setString(15, gender);
+            stmt.setString(16, ethnicAssociation);
+            stmt.setString(17, maritalStatus);
+            stmt.setString(18, currentPrimaryHCP);
+            stmt.setString(19, comments);
+            stmt.setString(20, nextOfKin);
+            stmt.setString(21, nextOfKinRelationshipToPatient);
+
 
             stmt.execute();
             con.close();
@@ -180,7 +180,7 @@ public class PatientDBUtil {
                 rs.getInt("PatientID"),
                 rs.getString("Tobacco"),
                 rs.getString("TobaccoQuantity"),
-                rs.getString("Tobaccoduration"),
+                rs.getString("Tobaccoduraton"),
                 rs.getString("Alcohol"),
                 rs.getString("AlcoholQuantity"),
                 rs.getString("Alcoholduration"),

@@ -13,7 +13,7 @@ public class Patient {
     private String PtFirstName;
     private String HomeAddress1;
     private String HomeCity;
-    private String HomeStateProvinceRegion;
+    private String HomeState;
     private String HomeZip;
     private String Country;
     private String Citizenship;
@@ -52,7 +52,7 @@ public class Patient {
         this.PatientID = PatientID;
     }
       public Patient(String PtLastName, String PtPreviousLastName, String PtFirstName, String HomeAddress1, 
-            String HomeCity, String HomeStateProvinceRegion, String HomeZip, String Country, String Citizenship, String PtMobilePhone, 
+            String HomeCity, String HomeState, String HomeZip, String Country, String Citizenship, String PtMobilePhone, 
             String EmergencyPhoneNumber, String EmailAddress, String PtSSN, Date DOB, String Gender, String EthnicAssociation, 
             String MaritalStatus, String CurrentPrimaryHCP, String Comments, String NextOfKin, String NextOfKinRelationshipToPatient) 
     {
@@ -61,7 +61,7 @@ public class Patient {
         this.PtFirstName = PtFirstName;
         this.HomeAddress1 = HomeAddress1;
         this.HomeCity = HomeCity;
-        this.HomeStateProvinceRegion = HomeStateProvinceRegion;
+        this.HomeState = HomeState;
         this.HomeZip = HomeZip;
         this.Country = Country;
         this.Citizenship = Citizenship;
@@ -124,9 +124,9 @@ public class Patient {
         return this.HomeCity;
     }
 
-    public String getHomeStateProvinceRegion() 
+    public String getHomeState() 
     {
-        return this.HomeStateProvinceRegion;
+        return this.HomeState;
     }
 
     public String getHomeZip() 

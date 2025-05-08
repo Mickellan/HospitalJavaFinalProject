@@ -325,6 +325,7 @@ public class patientDemographicsForm extends javax.swing.JFrame {
     } else {
         JOptionPane.showMessageDialog(this, "There was an issue saving the patient. Please try again.");
     }
+     btnNewActionPerformed(null);
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -414,7 +415,7 @@ public class patientDemographicsForm extends javax.swing.JFrame {
         txtPtFirstName.setText(patient.getPtFirstName());
         txtHomeAddress1.setText(patient.getHomeAddress1());
         txtHomeCity.setText(patient.getHomeCity());
-        txtHomeState.setText(patient.getHomeStateProvinceRegion());
+        txtHomeState.setText(patient.getHomeState());
         txtHomeZip.setText(patient.getHomeZip());
         txtCountry.setText(patient.getCountry());
         txtCitizenship.setText(patient.getCitizenship());

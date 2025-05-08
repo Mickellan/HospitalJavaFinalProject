@@ -29,7 +29,7 @@ public class GeneralMedicalInterview {
 
         InterviewNode nodeTobacco = new InterviewNode("Have you used tobacco?");
         InterviewNode nodeAlcohol = new InterviewNode("Have you consumed alcohol?");
-        InterviewNode nodeDrugs = new InterviewNode("Have you used recreational drugs?");
+        InterviewNode nodeDrugs = new InterviewNode("Have you used drugs?");
         InterviewNode nodeBlood = new InterviewNode("Do you know your blood type?");
         InterviewNode nodeThankYou = new InterviewNode("Thank you for your time.");
 

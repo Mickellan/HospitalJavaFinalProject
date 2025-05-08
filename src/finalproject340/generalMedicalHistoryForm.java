@@ -407,7 +407,7 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
     try {
         Connection con = DBConnection.getConnection();
-        String sql = "DELETE FROM generalmedicalhistory WHERE PatientID = ?";
+        String sql = "DELETE FROM generalmedicalhistorytable WHERE PatientID = ?";
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setInt(1, Integer.parseInt(txtPatientID.getText()));
 
@@ -432,7 +432,7 @@ public class generalMedicalHistoryForm extends javax.swing.JFrame {
         
         Patient patient = PatientDBUtil.retrieveGeneral(patientID);
         
-        txtPatientID.setText(patient.getPatientID());
+        txtPatientID.setText(String.valueOf(patient.getPatientID()));
         txtTobacco.setText(patient.getTobacco());
         txtTobaccoQuantity.setText(patient.getTobaccoQuantity());
         txtTobaccoDuration.setText(patient.getTobaccoduraton());
